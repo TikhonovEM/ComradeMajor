@@ -1,7 +1,8 @@
-namespace ComradeMajor;
+namespace ComradeMajor.Interfaces;
 
 public interface IStatisticsRepository<T>
 {
-    int ExecuteScalar(string command);
-    T GetStatsByDate(DateTime date);
+    void AddResult(T result);
+    void Save();
+    IEnumerable<T> GetStatsByDate(DateTime date);
 }
