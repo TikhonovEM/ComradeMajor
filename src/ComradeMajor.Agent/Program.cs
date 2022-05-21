@@ -2,7 +2,7 @@ using ComradeMajor;
 using ComradeMajor.Interfaces;
 using System.Runtime.InteropServices;
 
-Initializer.Execute();
+await Initializer.ExecuteAsync();
 
 IHost host = Host.CreateDefaultBuilder(args)
     .ConfigureServices(services =>

@@ -27,7 +27,7 @@ public class Worker : BackgroundService
             {
                 plugin.Execute(context);
             }
-            context.Repository.Save();
+            await context.Repository.SaveAsync();
             await Task.Delay(60000, stoppingToken);
         }
     }
