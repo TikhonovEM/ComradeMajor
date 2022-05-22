@@ -5,9 +5,11 @@ using System.Runtime.InteropServices;
 await Initializer.ExecuteAsync();
 
 IHost host = Host.CreateDefaultBuilder(args)
-    .ConfigureServices(services =>
+    .ConfigureServices((hostContext, services) =>
     {
         services.AddHostedService<Worker>();
+
+        services.Configure<AppSettings>(hostContext.Configuration.GetSection("Settings"));
 
         services.AddTransient<IStatisticsRepository<IScanResult>, StatisticsRepository>();
 
