@@ -45,9 +45,10 @@ public class StatisticsRepository : IStatisticsRepository<IScanResult>
                 {
                     var scanResult = new ScanResult();
                     scanResult.PluginIdentifier = reader.GetString(0);
-                    scanResult.Date = reader.GetDateTime(1);
-                    scanResult.ActiveProcess = JsonConvert.DeserializeObject<ProcessInfo>(reader.GetString(2));
-                    scanResult.Processes.AddRange(JsonConvert.DeserializeObject<List<ProcessInfo>>(reader.GetString(3)));
+                    scanResult.ScanPeriod = reader.GetInt32(1);
+                    scanResult.Date = reader.GetDateTime(2);
+                    scanResult.ActiveProcess = JsonConvert.DeserializeObject<ProcessInfo>(reader.GetString(3));
+                    scanResult.Processes.AddRange(JsonConvert.DeserializeObject<List<ProcessInfo>>(reader.GetString(4)));
 
                     scanResults.Add(scanResult);
                 }
