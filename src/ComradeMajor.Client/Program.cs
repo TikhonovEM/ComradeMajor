@@ -16,6 +16,6 @@ foreach (var plugin in plugins)
     Console.WriteLine($"\n================================\n\n\n{plugin.Name.ToUpper()}\n{plugin.Description}\n\n");
     plugin.ProcessInfo(stats.Where(s => s.PluginIdentifier == plugin.Identifier));
     Console.WriteLine("\n================================\n");
-
-    Console.Read();
+    
 }
+Console.Read();
