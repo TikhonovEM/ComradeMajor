@@ -35,9 +35,10 @@ public class StatisticsRepository : IStatisticsRepository<IScanResult>
             command.CommandText =
             @$"
                 SELECT * FROM Stats 
-                WHERE strftime('%s', Date) 
+                WHERE (strftime('%s', Date) 
                 BETWEEN strftime('%s', '{startOfDay.ToString("yyyy-MM-dd HH:mm:ss.fff")}') 
-                AND strftime('%s', '{endOfDay.ToString("yyyy-MM-dd HH:mm:ss.fff")}');
+                AND strftime('%s', '{endOfDay.ToString("yyyy-MM-dd HH:mm:ss.fff")}'))
+                AND (ActiveProcess IS NOT NULL AND ActiveProcess != 'null' AND ActiveProcess != '');
             ";
             using (var reader = command.ExecuteReader())
             {

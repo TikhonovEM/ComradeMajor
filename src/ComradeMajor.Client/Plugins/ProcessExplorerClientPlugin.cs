@@ -30,6 +30,6 @@ public class ProcessExplorerClientPlugin : IClientPlugin
         }
 
         foreach (var (activeProcess, time) in info)
-        Console.WriteLine($"Имя приложения - {activeProcess.Name}, потрачено - {time / 60d} мин.");
+        Console.WriteLine($"Имя приложения - {activeProcess.Name}, потрачено - {Math.Round(time / 60d, 2)} мин.");
     }
 } 
