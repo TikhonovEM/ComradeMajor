@@ -9,7 +9,7 @@ IHost host = Host.CreateDefaultBuilder(args)
     {
         services.AddHostedService<Worker>();
 
-        services.AddTransient<IStatisticsRepository<IScanResult>, StatisticsRepository<IScanResult>>();
+        services.AddTransient<IStatisticsRepository<IScanResult>, StatisticsRepository>();
 
         if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             services.AddSingleton<IWindowGetter, WindowsWindowGetter>();

@@ -4,12 +4,12 @@ using Microsoft.Data.Sqlite;
 
 namespace ComradeMajor;
 
-public class StatisticsRepository<IScanResult> : IStatisticsRepository<IScanResult>
+public class StatisticsRepository : IStatisticsRepository<IScanResult>
 {
     private readonly List<IScanResult> _results;
-    private readonly ILogger<StatisticsRepository<IScanResult>> _logger;
+    private readonly ILogger<StatisticsRepository> _logger;
 
-    public StatisticsRepository(ILogger<StatisticsRepository<IScanResult>> logger)
+    public StatisticsRepository(ILogger<StatisticsRepository> logger)
     {
         _results = new List<IScanResult>();
         _logger = logger;
@@ -31,7 +31,7 @@ public class StatisticsRepository<IScanResult> : IStatisticsRepository<IScanResu
             var command = connection.CreateCommand();
             command.CommandText =
             @$"
-                INSERT INTO Stats (Date, ActiveProcess, Processes)
+                INSERT INTO Stats (PluginIdentifier, Date, ActiveProcess, Processes)
                 VALUES {string.Join(",\n", resultsSQLText)};
             ";
             await command.ExecuteNonQueryAsync();

@@ -23,7 +23,7 @@ public static class Initializer
             var command = connection.CreateCommand();
             command.CommandText =
             @"
-                CREATE TABLE IF NOT EXISTS Stats(Date TEXT, ActiveProcess TEXT, Processes TEXT);
+                CREATE TABLE IF NOT EXISTS Stats(PluginIdentifier TEXT, Date TEXT, ActiveProcess TEXT, Processes TEXT);
             ";
 
             await command.ExecuteNonQueryAsync();

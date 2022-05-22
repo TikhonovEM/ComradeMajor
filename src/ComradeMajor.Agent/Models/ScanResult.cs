@@ -5,11 +5,12 @@ namespace ComradeMajor.Models;
 
 public class ScanResult : IScanResult
 {
-    public DateTime Date { get; init; }
+    public string PluginIdentifier { get; set; }
+    public DateTime Date { get; set; }
 
     public IProcessInfo ActiveProcess { get; set; }
 
-    public List<IProcessInfo> Processes { get; }
+    public List<IProcessInfo> Processes { get; set; }
 
     public ScanResult()
     {
@@ -18,7 +19,7 @@ public class ScanResult : IScanResult
 
     public override string ToString()
     {
-        return $"('{Date.ToString("yyyy-MM-dd HH:mm:ss.fff")}', '{JsonConvert.SerializeObject(ActiveProcess)}', '{JsonConvert.SerializeObject(Processes)}')";
+        return $"('{PluginIdentifier}', '{Date.ToString("yyyy-MM-dd HH:mm:ss.fff")}', '{JsonConvert.SerializeObject(ActiveProcess)}', '{JsonConvert.SerializeObject(Processes)}')";
     }
     
 }
