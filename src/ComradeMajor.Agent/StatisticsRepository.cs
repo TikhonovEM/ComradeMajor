@@ -31,7 +31,7 @@ public class StatisticsRepository : IStatisticsRepository<IScanResult>
             var command = connection.CreateCommand();
             command.CommandText =
             @$"
-                INSERT INTO Stats (PluginIdentifier, Date, ActiveProcess, Processes)
+                INSERT INTO Stats (PluginIdentifier, ScanPeriod, Date, ActiveProcess, Processes)
                 VALUES {string.Join(",\n", resultsSQLText)};
             ";
             await command.ExecuteNonQueryAsync();
