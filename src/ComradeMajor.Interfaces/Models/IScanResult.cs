@@ -2,9 +2,10 @@ namespace ComradeMajor.Interfaces;
 
 public interface IScanResult
 {
-    DateTime Date { get; init; }
+    string PluginIdentifier { get; set; }
+    DateTime Date { get; set; }
     IProcessInfo ActiveProcess { get; set;}
 
-    List<IProcessInfo> Processes { get; }
+    List<IProcessInfo> Processes { get; set; }
     
 }

@@ -5,11 +5,13 @@ using System.Runtime.InteropServices;
 await Initializer.ExecuteAsync();
 
 IHost host = Host.CreateDefaultBuilder(args)
-    .ConfigureServices(services =>
+    .ConfigureServices((hostContext, services) =>
     {
         services.AddHostedService<Worker>();
 
-        services.AddTransient<IStatisticsRepository<IScanResult>, StatisticsRepository<IScanResult>>();
+        services.Configure<AppSettings>(hostContext.Configuration.GetSection("Settings"));
+
+        services.AddTransient<IStatisticsRepository<IScanResult>, StatisticsRepository>();
 
         if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             services.AddSingleton<IWindowGetter, WindowsWindowGetter>();
