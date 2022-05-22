@@ -12,6 +12,7 @@ public class ProcessExplorerClientPlugin : IClientPlugin
         Name = name;
         Description = description;
     }
+    public string Identifier { get; set; } = "ProcessExplorerPlugin";
 
     public string Name { get; set; }
     public string Description { get; set;}
@@ -25,7 +26,7 @@ public class ProcessExplorerClientPlugin : IClientPlugin
         {
             if (!info.Any(p => p.Key.Equals(scan.ActiveProcess)))
                 info.Add(scan.ActiveProcess, 0);
-            info[scan.ActiveProcess] += 60;
+            info[scan.ActiveProcess] += scan.ScanPeriod;
         }
 
         foreach (var (activeProcess, time) in info)

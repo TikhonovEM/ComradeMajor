@@ -4,11 +4,12 @@ namespace ComradeMajor.Models;
 
 public class ScanResult : IScanResult
 {
-    public DateTime Date { get; init; }
+    public string PluginIdentifier { get; set; }
+    public DateTime Date { get; set; }
 
     public IProcessInfo ActiveProcess { get; set; }
 
-    public List<IProcessInfo> Processes { get; }
+    public List<IProcessInfo> Processes { get; set; }
 
     public ScanResult()
     {
